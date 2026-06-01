@@ -31,6 +31,7 @@ APPS = {
     "task manager":  ("exe", "taskmgr.exe"),
     "settings":      ("uri", "ms-settings:"),
     "paint":         ("exe", "mspaint.exe"),
+    "outlook": ("exe", "C:\\Program Files\\Microsoft Office\\root\\Office16\\OUTLOOK.EXE"),
 }
 def launch_app(app_name):
     if app_name not in APPS:
@@ -445,23 +446,21 @@ def desktop_node():
 ========================================
            DESKTOP NODE
 ========================================
-PUSH SEARCH      -> Web Search
-PUSH YOUTUBE     -> YouTube Search
-PUSH WRITE       -> Write in Notepad
-PUSH CALC        -> Calculator
+SEARCH         -> Web Search
+YOUTUBE        -> YouTube Search
+WRITE          -> Write in Notepad
+CALC           -> Calculator
 
-PUSH AI          -> AI Assistant (Groq)
-PUSH PIC         -> Camera (photo/video/selfie)s
-PUSH SS          -> Screenshot
-PUSH OPEN        -> Open App
+AI             -> AI Assistant (Groq)
+CAMERA         -> Camera (photo/video/selfie)s
+SS             -> Screenshot
+OPEN           -> Open App
 
-PUSH HELP        -> alert help
-PUSH MAIL        -> Send mail
-PUSH OCR AI      -> summarizes the screen
+HELP           -> alert help
+MAIL           -> Send mail
+SCREENSUM      -> summarizes the screen
 
 [FUTURE TASKS: TASK8, TASK9, TASK10...]
-
-RETURN           -> Back to Master Hub
 ========================================
 """)
 
@@ -480,32 +479,32 @@ RETURN           -> Back to Master Hub
         # DIRECT COMMANDS
         # ----------------------------------------
 
-        if cmd == "RETURN":
+        '''if cmd == "RETURN":
             print("\n[DESKTOP] Returning to Master Hub...\n")
-            break
+            break'''
 
-        elif cmd == "PUSH SEARCH":
+        if cmd == "SEARCH":
             web_search()
 
-        elif cmd == "PUSH YOUTUBE":
+        elif cmd == "YOUTUBE":
             youtube_search()
 
-        elif cmd == "PUSH WRITE":
+        elif cmd == "WRITE":
             write_in_notepad()
 
-        elif cmd == "PUSH CALC":
+        elif cmd == "CALC":
             open_calculator()
 
-        elif cmd == "PUSH AI":
+        elif cmd == "AI":
             start_ai_session()
 
-        elif cmd == "PUSH PIC":
+        elif cmd == "CAMERA":
             camera_menu()
 
-        elif cmd == "PUSH SS":
+        elif cmd == "SS":
             take_screenshot()
 
-        elif cmd == "PUSH OPEN":
+        elif cmd == "OPEN":
             app = input("\nApp to open: ").strip().lower()
             if app in APPS:
                 launch_app(app)
@@ -513,13 +512,13 @@ RETURN           -> Back to Master Hub
                 print(f"\n[DESKTOP] App '{app}' not found in list.\n")
                 print("Available:", ", ".join(APPS.keys()))
 
-        elif cmd == "PUSH HELP":
+        elif cmd == "HELP":
             help_fn()
 
-        elif cmd == "PUSH MAIL":
+        elif cmd == "MAIL":
             push_mail()
 
-        elif cmd == "PUSH OCR AI":
+        elif cmd == "SCREENSUM":
             ocr_reading()
 
         # ----------------------------------------
@@ -570,14 +569,14 @@ RETURN           -> Back to Master Hub
             elif matched == "screenshot":
                 take_screenshot()
 
-            elif matched == "lock screen":
-                lock_screen()
+            elif matched == "help":
+                help_fn()
 
-            elif matched == "shutdown":
-                shutdown()
+            elif matched == "mail":
+                push_mail()
 
-            elif matched == "restart":
-                restart()
+            elif matched == "summarize screen":
+                ocr_reading()
 
             else:
                 # Final fallback — ask AI

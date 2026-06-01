@@ -5,7 +5,7 @@
 
 from groq import Groq
 
-GROQ_API_KEY         = "YOUR_API_KEY_HERE"   # <-- paste your Groq key
+GROQ_API_KEY         = "YOUR_GROQ_API_KEY_HERE"   # <-- paste your Groq key
 groq_client          = Groq(api_key=GROQ_API_KEY)
 conversation_history = []
 
